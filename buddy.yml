@@ -1,0 +1,18 @@
+- pipeline: 'Deploy to Swaggerhub'
+  trigger_mode: 'ON_EVERY_PUSH'
+  ref_name: 'master'
+  ref_type: 'BRANCH'
+  trigger_condition: 'ALWAYS'
+  actions:
+    - action: 'POST to Swaggerhub API'
+      type: 'BUILD'
+      docker_image_name: 'library/alpine'
+      docker_image_tag: 'latest'
+      execute_commands:
+        - 'apk update && apk upgrade'
+        - 'apk add curl'
+        - >-
+          curl -X POST "https://api.swaggerhub.com/apis/stanleynguyen/swaggerhub-ci?isPrivate=true"
+          -H "Authorization: $SWAGGER_KEY"
+          -H "Content-Type: application/yaml"
+          --data-binary @petstore.yaml
