@@ -12,7 +12,7 @@
         - 'apk update && apk upgrade'
         - 'apk add curl'
         - >-
-          curl -X POST "https://api.swaggerhub.com/apis/stanleynguyen/swaggerhub-ci?isPrivate=true"
+          curl -X POST "https://api.swaggerhub.com/apis/stanleynguyen/swaggerhub-ci"
           -H "Authorization: $SWAGGER_KEY"
           -H "Content-Type: application/yaml"
           --data-binary @petstore.yaml
@@ -30,7 +30,7 @@
         - 'apk update && apk upgrade'
         - 'apk add curl'
         - >-
-          curl -X POST "https://api.swaggerhub.com/apis/stanleynguyen/swaggerhub-ci-draft-$BUDDY_EXECUTION_PULL_REQUEST_NO?isPrivate=true"
+          curl -X POST "https://api.swaggerhub.com/apis/stanleynguyen/swaggerhub-ci-draft-$BUDDY_EXECUTION_PULL_REQUEST_NO"
           -H "Authorization: $SWAGGER_KEY"
           -H "Content-Type: application/yaml"
           --data-binary @petstore.yaml
